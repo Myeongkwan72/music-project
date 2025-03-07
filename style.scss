@@ -45,9 +45,10 @@ body {
     #display {
       width: 420px;
       height: 320px;
-      border: 2px solid map-get($map: $color, $key: dark);
+      border: 1px solid map-get($map: $color, $key: main);
       border-radius: 24px;
       overflow: hidden;
+      position: relative;
       .status-bar {
         height: 40px;
         background: linear-gradient(
@@ -56,31 +57,34 @@ body {
           #d1d1d1 49.56%,
           #a2a6a9 100%
         );
-        border-bottom: 1px solid map-get($map: $color, $key: dark);
+        border-bottom: 1px solid map-get($map: $color, $key: main);
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px 20px;
-        .material-symbols-outlined {
-          font-size: 2.4rem;
-          color: map-get($map: $color, $key: blue);
-          font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
-        }
         p {
+          font-size: 1.4rem;
+          font-weight: 500;
+          color: map-get($map: $color, $key: dark);
+        }
+        .clock {
           font-size: 2rem;
-          font-weight: bold;
+          font-weight: 500;
+          color: map-get($map: $color, $key: dark);
         }
         .battery {
           height: 16px;
-          width: 40px;
+          width: 32px;
           background: map-get($map: $color, $key: main);
-          border: 1px solid map-get($map: $color, $key: dark);
+          border: 1px solid map-get($map: $color, $key: main);
           border-radius: 4px;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
           overflow: hidden;
         }
         .battery-inner {
           height: 16px;
-          width: 28px;
+          width: 24px;
+          border-radius: 4px;
           background: linear-gradient(
             180deg,
             #cde6af 0%,
@@ -126,7 +130,7 @@ body {
             .title {
               @include desc-style();
               font-size: 2rem;
-              font-weight: bold;
+              font-weight: 500;
             }
             .artist {
               @include desc-style();
@@ -138,6 +142,52 @@ body {
               @include desc-style();
             }
           }
+        }
+      }
+      .sub-contents {
+        width: 420px;
+        height: 280px;
+        padding: 20px;
+        background: #fff;
+        position: absolute;
+        transition: transform 0.3s;
+        .albumTable {
+          width: 100%;
+          height: 240px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-content: start;
+          tbody {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            tr {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              &:nth-child(1) {
+                font-weight: bold;
+              }
+              th {
+                width: 80px;
+                @include desc-style();
+              }
+              td {
+                width: 80px;
+                @include desc-style();
+              }
+              .album-title {
+                cursor: pointer;
+                z-index: 2;
+              }
+            }
+          }
+        }
+        &.on {
+          transform: translateY(-240px);
         }
       }
       .time-bar {
@@ -158,6 +208,8 @@ body {
           position: absolute;
           top: 0;
           left: 50%;
+          border-radius: 4px;
+          overflow: hidden;
           transform: translateX(-50%);
           background: linear-gradient(
             180deg,
@@ -175,6 +227,9 @@ body {
         .duration {
           font-size: 1.6rem;
           line-height: 1.6rem;
+        }
+        &.on {
+          transform: translateY(240px);
         }
       }
     }

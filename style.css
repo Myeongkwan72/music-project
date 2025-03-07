@@ -47,40 +47,51 @@ body {
 #container #ipod #display {
   width: 420px;
   height: 320px;
-  border: 2px solid #000000;
+  border: 1px solid #bebebe;
   border-radius: 24px;
   overflow: hidden;
+  position: relative;
 }
 #container #ipod #display .status-bar {
   height: 40px;
   background: linear-gradient(180deg, #f7f7f7 0%, #d1d1d1 49.56%, #a2a6a9 100%);
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #bebebe;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
 }
-#container #ipod #display .status-bar .material-symbols-outlined {
-  font-size: 2.4rem;
-  color: #4facfe;
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
-}
 #container #ipod #display .status-bar p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #000000;
+}
+#container #ipod #display .status-bar .clock {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 500;
+  color: #000000;
 }
 #container #ipod #display .status-bar .battery {
   height: 16px;
-  width: 40px;
+  width: 32px;
   background: #bebebe;
-  border: 1px solid #000000;
+  border: 1px solid #bebebe;
   border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
 #container #ipod #display .status-bar .battery-inner {
   height: 16px;
-  width: 28px;
-  background: linear-gradient(180deg, #cde6af 0%, #aee490 25.07%, #88cc65 50%, #66ad43 75.06%, #659b47 100%);
+  width: 24px;
+  border-radius: 4px;
+  background: linear-gradient(
+    180deg,
+    #cde6af 0%,
+    #aee490 25.07%,
+    #88cc65 50%,
+    #66ad43 75.06%,
+    #659b47 100%
+  );
 }
 #container #ipod #display .contents {
   width: 420px;
@@ -109,7 +120,7 @@ body {
   height: 100%;
   border-radius: 12px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 #container #ipod #display .contents .content .desc {
   width: 160px;
@@ -125,7 +136,7 @@ body {
   overflow: hidden;
   color: #000000;
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 500;
 }
 #container #ipod #display .contents .content .desc .artist {
   font-size: 1.6rem;
@@ -148,6 +159,60 @@ body {
   overflow: hidden;
   color: #000000;
 }
+#container #ipod #display .sub-contents {
+  width: 420px;
+  height: 280px;
+  padding: 20px;
+  background: #fff;
+  position: absolute;
+  transition: transform 0.3s;
+}
+#container #ipod #display .sub-contents .albumTable {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: start;
+}
+#container #ipod #display .sub-contents .albumTable tbody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#container #ipod #display .sub-contents .albumTable tbody tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#container #ipod #display .sub-contents .albumTable tbody tr:nth-child(1) {
+  font-weight: bold;
+}
+#container #ipod #display .sub-contents .albumTable tbody tr th {
+  width: 80px;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+}
+#container #ipod #display .sub-contents .albumTable tbody tr td {
+  width: 80px;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+}
+#container #ipod #display .sub-contents .albumTable tbody tr .album-title {
+  cursor: pointer;
+  z-index: 2;
+}
+#container #ipod #display .sub-contents.on {
+  transform: translateY(-240px);
+}
 #container #ipod #display .time-bar {
   width: 420px;
   height: 40px;
@@ -167,6 +232,8 @@ body {
   position: absolute;
   top: 0;
   left: 50%;
+  border-radius: 4px;
+  overflow: hidden;
   transform: translateX(-50%);
   background: linear-gradient(180deg, #e4e4e4 0%, #f4f4f4 50%, #e4e4e4 100%);
 }
@@ -179,6 +246,9 @@ body {
 #container #ipod #display .time-bar .duration {
   font-size: 1.6rem;
   line-height: 1.6rem;
+}
+#container #ipod #display .time-bar.on {
+  transform: translateY(240px);
 }
 #container #ipod #player {
   width: 360px;

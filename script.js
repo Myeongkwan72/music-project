@@ -2,13 +2,20 @@ const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 const play = document.querySelector(".fa-play");
 const pause = document.querySelector(".fa-pause");
+const menu = document.querySelector(".menu");
 
 const frame = document.querySelector(".contents");
+const sub = document.querySelector(".sub-contents");
 const items = frame.querySelectorAll(".content");
 const songs = frame.querySelectorAll("audio");
 const numbers = document.querySelectorAll(".number");
+const titles = document.querySelectorAll(".album-title");
+console.log(titles);
 
 const progressCover = document.querySelector(".progress");
+const timeBar = document.querySelector(".time-bar");
+
+const clock = document.querySelector(".clock");
 
 // slide
 
@@ -73,6 +80,25 @@ items.forEach((item) => {
     songs[currentIndex].pause();
   });
 
+  songs.forEach((song, index) => {
+    song.addEventListener("ended", () => {
+      currentIndex = (index + 1) % totalItems;
+      updateSlide();
+
+      songs.forEach((s, i) => {
+        if (i === currentIndex) {
+          s.play();
+        } else {
+          s.load();
+        }
+      });
+
+      numbers.forEach((number) => {
+        number.innerText = `${currentIndex + 1} / ${totalItems}`;
+      });
+    });
+  });
+
   updateSlide();
 });
 
@@ -113,4 +139,23 @@ songs.forEach((song) => {
   };
 
   song.addEventListener("timeupdate", updateProgress);
+});
+
+// clock
+const time = () => {
+  const now = new Date();
+  let hrs = now.getHours();
+  let mins = now.getMinutes();
+
+  hrs = hrs < 10 ? "0" + hrs : hrs;
+  mins = mins < 10 ? "0" + mins : mins;
+
+  clock.innerText = `${hrs}:${mins}`;
+};
+setInterval(time, 1000);
+
+// menu
+menu.addEventListener("click", () => {
+  sub.classList.toggle("on");
+  timeBar.classList.toggle("on");
 });
