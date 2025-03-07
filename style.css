@@ -1,0 +1,290 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1.6rem;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: url("./img/bg.gif") top/cover no-repeat;
+}
+#container #ipod {
+  width: 500px;
+  height: 850px;
+  border-radius: 32px;
+  background: linear-gradient(180deg, #f7f7f7 0%, #d1d1d1 49.56%, #a2a6a9 100%);
+  box-shadow: 0px 0px 24px 4px rgba(0, 0, 0, 0.5) inset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 65px;
+}
+#container #ipod #display {
+  width: 420px;
+  height: 320px;
+  border: 2px solid #000000;
+  border-radius: 24px;
+  overflow: hidden;
+}
+#container #ipod #display .status-bar {
+  height: 40px;
+  background: linear-gradient(180deg, #f7f7f7 0%, #d1d1d1 49.56%, #a2a6a9 100%);
+  border-bottom: 1px solid #000000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+#container #ipod #display .status-bar .material-symbols-outlined {
+  font-size: 2.4rem;
+  color: #4facfe;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+#container #ipod #display .status-bar p {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#container #ipod #display .status-bar .battery {
+  height: 16px;
+  width: 40px;
+  background: #bebebe;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#container #ipod #display .status-bar .battery-inner {
+  height: 16px;
+  width: 28px;
+  background: linear-gradient(180deg, #cde6af 0%, #aee490 25.07%, #88cc65 50%, #66ad43 75.06%, #659b47 100%);
+}
+#container #ipod #display .contents {
+  width: 420px;
+  height: 240px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+#container #ipod #display .contents .content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  position: absolute;
+}
+#container #ipod #display .contents .content .thumbnail {
+  width: 200px;
+  height: 200px;
+  border-radius: 24px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+#container #ipod #display .contents .content .thumbnail img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#container #ipod #display .contents .content .desc {
+  width: 160px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#container #ipod #display .contents .content .desc .title {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+  font-size: 2rem;
+  font-weight: bold;
+}
+#container #ipod #display .contents .content .desc .artist {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+}
+#container #ipod #display .contents .content .desc .album {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+}
+#container #ipod #display .contents .content .desc .released {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #000000;
+}
+#container #ipod #display .time-bar {
+  width: 420px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+  background: #fff;
+  position: relative;
+}
+#container #ipod #display .time-bar .current {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+#container #ipod #display .time-bar .progress {
+  width: 280px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #e4e4e4 0%, #f4f4f4 50%, #e4e4e4 100%);
+}
+#container #ipod #display .time-bar .progress .bar {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  color: #f00;
+}
+#container #ipod #display .time-bar .duration {
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+}
+#container #ipod #player {
+  width: 360px;
+  height: 360px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#container #ipod #player .buttons {
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(180deg, #bebebe 0%, #d3d3d3 49.78%, #e3e3e3 100%);
+  border-radius: 50%;
+}
+#container #ipod #player .buttons .menu {
+  position: absolute;
+  font-size: 2.4rem;
+  font-weight: 600;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #bebebe;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#container #ipod #player .buttons .menu:hover {
+  color: #000000;
+}
+#container #ipod #player .buttons .next {
+  position: absolute;
+  font-size: 2.4rem;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  color: #bebebe;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#container #ipod #player .buttons .next:hover {
+  color: #000000;
+}
+#container #ipod #player .buttons .play {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #bebebe;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#container #ipod #player .buttons .play:hover {
+  color: #000000;
+}
+#container #ipod #player .buttons .play .fa-play {
+  font-size: 2.4rem;
+}
+#container #ipod #player .buttons .play .fa-pause {
+  font-size: 2.4rem;
+}
+#container #ipod #player .buttons .prev {
+  position: absolute;
+  font-size: 2.4rem;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  color: #bebebe;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#container #ipod #player .buttons .prev:hover {
+  color: #000000;
+}
+#container .text {
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+#container .text .text-top {
+  display: flex;
+  flex-direction: column;
+}
+#container .text .text-top .title {
+  color: #ffffff;
+  font-size: 10rem;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+#container .text .text-top p {
+  font-size: 2.4rem;
+  color: #ffffff;
+}
+#container .text .text-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#container .text .text-bottom img {
+  filter: invert(100%);
+}
+#container .text .text-bottom .name {
+  color: #ffffff;
+  font-size: 2rem;
+}

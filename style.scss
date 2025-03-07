@@ -1,0 +1,296 @@
+@import "./styles/reset.scss";
+@import "./styles/variables.scss";
+
+@mixin desc-style {
+  font-size: 1.6rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: map-get($map: $color, $key: dark);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1.6rem;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: url("./img/bg.gif") top / cover no-repeat;
+  #ipod {
+    width: 500px;
+    height: 850px;
+    border-radius: 32px;
+    background: linear-gradient(
+      180deg,
+      #f7f7f7 0%,
+      #d1d1d1 49.56%,
+      #a2a6a9 100%
+    );
+    box-shadow: 0px 0px 24px 4px rgba(0, 0, 0, 0.5) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 65px;
+    #display {
+      width: 420px;
+      height: 320px;
+      border: 2px solid map-get($map: $color, $key: dark);
+      border-radius: 24px;
+      overflow: hidden;
+      .status-bar {
+        height: 40px;
+        background: linear-gradient(
+          180deg,
+          #f7f7f7 0%,
+          #d1d1d1 49.56%,
+          #a2a6a9 100%
+        );
+        border-bottom: 1px solid map-get($map: $color, $key: dark);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        .material-symbols-outlined {
+          font-size: 2.4rem;
+          color: map-get($map: $color, $key: blue);
+          font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+        }
+        p {
+          font-size: 2rem;
+          font-weight: bold;
+        }
+        .battery {
+          height: 16px;
+          width: 40px;
+          background: map-get($map: $color, $key: main);
+          border: 1px solid map-get($map: $color, $key: dark);
+          border-radius: 4px;
+          overflow: hidden;
+        }
+        .battery-inner {
+          height: 16px;
+          width: 28px;
+          background: linear-gradient(
+            180deg,
+            #cde6af 0%,
+            #aee490 25.07%,
+            #88cc65 50%,
+            #66ad43 75.06%,
+            #659b47 100%
+          );
+        }
+      }
+      .contents {
+        width: 420px;
+        height: 240px;
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+        background: map-get($map: $color, $key: light);
+        position: relative;
+        overflow: hidden;
+        .content {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          position: absolute;
+          .thumbnail {
+            width: 200px;
+            height: 200px;
+            border-radius: 24px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 12px;
+              object-fit: cover;
+            }
+          }
+          .desc {
+            width: 160px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .title {
+              @include desc-style();
+              font-size: 2rem;
+              font-weight: bold;
+            }
+            .artist {
+              @include desc-style();
+            }
+            .album {
+              @include desc-style();
+            }
+            .released {
+              @include desc-style();
+            }
+          }
+        }
+      }
+      .time-bar {
+        width: 420px;
+        height: 40px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px 20px;
+        background: #fff;
+        position: relative;
+        .current {
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+        }
+        .progress {
+          width: 280px;
+          height: 20px;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          background: linear-gradient(
+            180deg,
+            #e4e4e4 0%,
+            #f4f4f4 50%,
+            #e4e4e4 100%
+          );
+          .bar {
+            width: 0;
+            height: 100%;
+            position: absolute;
+            color: #f00;
+          }
+        }
+        .duration {
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+        }
+      }
+    }
+    #player {
+      width: 360px;
+      height: 360px;
+      background: map-get($map: $color, $key: light);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      .buttons {
+        width: 140px;
+        height: 140px;
+        background: linear-gradient(
+          180deg,
+          #bebebe 0%,
+          #d3d3d3 49.78%,
+          #e3e3e3 100%
+        );
+        border-radius: 50%;
+        .menu {
+          position: absolute;
+          font-size: 2.4rem;
+          font-weight: 600;
+          top: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: map-get($map: $color, $key: main);
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: map-get($map: $color, $key: dark);
+          }
+        }
+        .next {
+          position: absolute;
+          font-size: 2.4rem;
+          top: 50%;
+          right: 40px;
+          transform: translateY(-50%);
+          color: map-get($map: $color, $key: main);
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: map-get($map: $color, $key: dark);
+          }
+        }
+        .play {
+          position: absolute;
+          bottom: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: map-get($map: $color, $key: main);
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: map-get($map: $color, $key: dark);
+          }
+          .fa-play {
+            font-size: 2.4rem;
+          }
+          .fa-pause {
+            font-size: 2.4rem;
+          }
+        }
+        .prev {
+          position: absolute;
+          font-size: 2.4rem;
+          top: 50%;
+          left: 40px;
+          transform: translateY(-50%);
+          color: map-get($map: $color, $key: main);
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: map-get($map: $color, $key: dark);
+          }
+        }
+      }
+    }
+  }
+  .text {
+    height: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    .text-top {
+      display: flex;
+      flex-direction: column;
+      .title {
+        color: map-get($map: $color, $key: light);
+        font-size: 10rem;
+        display: flex;
+        align-items: center;
+        gap: 50px;
+      }
+      p {
+        font-size: 2.4rem;
+        color: map-get($map: $color, $key: light);
+      }
+    }
+
+    .text-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        filter: invert(100%);
+      }
+      .name {
+        color: map-get($map: $color, $key: light);
+        font-size: 2rem;
+      }
+    }
+  }
+}
